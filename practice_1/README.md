@@ -1,1 +1,2 @@
-A sample command-line application providing basic argument parsing with an entrypoint in `bin/`.
+Api: weather api  
+Получить ключ: https://www.weatherapi.com/my/
