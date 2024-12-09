@@ -16,4 +16,12 @@ class OMApi{
 
     return OMWeather(rJson['current']['temp_c'], rJson['current']['condition']['text']);
   }
+
+  Future<OMWeather> getWeatherCoord(double x, double y) async {
+    var response = await http.get(Uri.parse('$url/v1/current.json?key=$apiKey&q=$x,$y'));
+    var rJson = jsonDecode(response.body);
+
+    return OMWeather(rJson['current']['temp_c'], rJson['current']['condition']['text']);
+  }
+
 }

@@ -1,5 +1,14 @@
-class SearchQuery {
+sealed class SearchQuery {}
+
+class SearchQueryCity extends SearchQuery{
   final String city;
 
-  const SearchQuery(this.city);
+  SearchQueryCity(this.city);
+}
+
+class SearchQueryCoord extends SearchQuery{
+  final double x;
+  final double y;
+
+  SearchQueryCoord(this.x, this.y);
 }

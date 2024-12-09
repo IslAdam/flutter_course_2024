@@ -8,15 +8,25 @@ class App {
   App(this.repository);
 
   void run() async {
-    print('Введите город:');
-    var city = stdin.readLineSync();
+    print('Введите город или координаты через пробел:');
+    var input = stdin.readLineSync();
 
-    if (city == null) {
+    if (input == null) {
       print('Ошибка ввода');
       return;
     }
 
-    var resp = await repository.getWeather(SearchQuery(city));
-    print('Погода в городе $city: ${resp.temp-273} по Цельсию, тип: ${resp.type}');
+    if (input.contains(' ')) {
+      var parts = input.split(' ');
+      var x = double.parse(parts[0]);
+      var y = double.parse(parts[1]);
+      var resp = await repository.getWeather(SearchQueryCoord(x,y));
+      print('Погода в городе $input: ${resp.temp-273} по Цельсию, тип: ${resp.type}');
+
+    } else {
+      var resp = await repository.getWeather(SearchQueryCity(input));
+      print('Погода в городе $input: ${resp.temp-273} по Цельсию, тип: ${resp.type}');
+
+    }
   }
 }

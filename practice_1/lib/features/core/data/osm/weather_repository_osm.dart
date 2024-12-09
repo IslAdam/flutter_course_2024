@@ -10,8 +10,16 @@ class WeatherRepositoryOSM implements WeatherRepository {
 
   @override
   Future<SearchResponse> getWeather(SearchQuery query) async {
-    var response = await _api.getWeather(query.city);
-    return SearchResponse(response.temp.toInt(), _weatherType(response.type));
+    //var response = await _api.getWeather(query.city);
+    //return SearchResponse(response.temp.toInt(), _weatherType(response.type));
+
+    switch (query) {
+      case SearchQueryCity():
+        var response = await _api.getWeather(query.city);
+        return SearchResponse(response.temp.toInt(), _weatherType(response.type));
+      case SearchQueryCoord():
+        throw UnimplementedError();
+    }
   }
 }
 
