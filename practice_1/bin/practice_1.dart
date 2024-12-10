@@ -8,10 +8,10 @@ import 'package:practice_1/features/core/presentation/app.dart';
 
 const String version = '0.0.1';
 const String urlOSM = 'https://api.openweathermap.org';
-const String apiKeyOSM = '09e00810b2e445d3e9c83a261722a6cd';
+const String apiKeyOSM = '';
 
 const String urlOM = 'http://api.weatherapi.com';
-const String apiKeyOM = '5369c50629664ed2918234108240812';
+const String apiKeyOM = '';
 
 
 void main(List<String> arguments) {
